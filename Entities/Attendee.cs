@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EventbriteNET.Entities
 {
@@ -59,6 +60,30 @@ namespace EventbriteNET.Entities
         public AttendeeGender? Gender;
         public DateTime? BirthDate;
         public int? Age;
+
+        private List<Barcode> _barcodes;
+        public List<Barcode> Barcodes
+        {
+            get
+            {
+                return _barcodes ?? new List<Barcode>();
+            }
+            set
+            {
+                if(_barcodes == null) _barcodes =new List<Barcode>();
+                _barcodes = value;
+            }
+        }
+
+        private List<Answer> _answers;
+        public List<Answer> Answers
+        {
+            get { return _answers ?? new List<Answer>();}
+            set { 
+                if (_answers == null) _answers = new List<Answer>();
+                _answers = value;
+            }
+        }
 
         public Attendee(EventbriteContext context) : base(context) { }
     }
